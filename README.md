@@ -41,3 +41,4 @@ Premium, single-page portfolio for showcasing Websites, AI Videos, and Projects.
 - Update hero chips/services/about copy in `index.html`.
 - Add testimonials or blog blocks by duplicating existing section patterns.
 
+# portfolio
