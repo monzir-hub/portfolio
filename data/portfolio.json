@@ -1,0 +1,121 @@
+[
+  {
+    "id": "mymotherisnotoil",
+    "title": "My Mother Is Not Oil",
+    "category": "websites",
+    "shortDescription": "Narrative microsite crafted with AI assistance.",
+    "description": "Story-driven microsite created with AI-assisted copy and layout, optimized for performance and accessibility.",
+    "thumbnail": "public/portfolio/mmio-cover.png",
+    "media": {
+      "type": "image",
+      "src": "public/portfolio/mmio-cover.png"
+    },
+    "tools": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "links": {
+      "live": "https://mymotherisnotoil.com",
+      "github": "",
+      "caseStudy": ""
+    },
+    "featured": true
+  },
+  {
+    "id": "aurora-viz",
+    "title": "Ghazalten Animation",
+    "category": "ai-videos",
+    "shortDescription": "Narrative-style AI animation",
+    "description": "Narrative AI animation with story beats, prompt crafting, sequencing, and polish.",
+    "thumbnail": "public/portfolio/ghazalten-anim-cover.png",
+    "media": {
+      "type": "video",
+      "src": "public/portfolio/Ghazalten Animation.mp4",
+      "poster": "public/portfolio/ghazalten-anim-cover.png"
+    },
+    "tools": [
+      "Runway",
+      "Prompt design",
+      "Color pass"
+    ],
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "featured": true
+  },
+  {
+    "id": "ghazalten-ai",
+    "title": "Ghazalten Advertisement",
+    "category": "ai-videos",
+    "shortDescription": "AI-crafted promo sequence for Ghazalten",
+    "description": "High-energy AI advertisement: crafted prompts, pacing, and finishing to deliver a promo-ready cut.",
+    "thumbnail": "public/portfolio/ghazalten-ad-cover.png",
+    "media": {
+      "type": "video",
+      "src": "public/portfolio/ghazalten-ad.mp4",
+      "poster": "public/portfolio/ghazalten-ad-cover.png"
+    },
+    "tools": [
+      "Runway",
+      "Prompt writing",
+      "Audio sync"
+    ],
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "featured": true
+  },
+  {
+    "id": "short-meaningful-film",
+    "title": "Short Meaningful Film",
+    "category": "ai-videos",
+    "shortDescription": "AI-generated short film with meaningful pacing",
+    "description": "AI visual narrative cut to emphasize mood and pacing; prompts and sequencing tailored for a cohesive short film.",
+    "thumbnail": "public/portfolio/short-film-cover.png",
+    "media": {
+      "type": "video",
+      "src": "public/portfolio/short-meaningful-film.mp4",
+      "poster": "public/portfolio/short-film-cover.png"
+    },
+    "tools": [
+      "Runway",
+      "Prompt curation",
+      "DaVinci Resolve"
+    ],
+    "links": {
+      "live": "",
+      "github": "",
+      "caseStudy": ""
+    },
+    "featured": false
+  },
+  {
+    "id": "odf-site",
+    "title": "Omdurman Digital Forge",
+    "category": "websites",
+    "shortDescription": "AI-assisted services website with neon glass UI.",
+    "description": "Built an AI-assisted marketing site for digital services with modern neon styling, responsive layout, and fast edge delivery on Vercel.",
+    "thumbnail": "public/portfolio/odf-cover.png",
+    "media": {
+      "type": "image",
+      "src": "public/portfolio/odf-cover.png"
+    },
+    "tools": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vercel"
+    ],
+    "links": {
+      "live": "https://omdurman-digital-forge-main-lli4mnzk7-amonzir2-2699s-projects.vercel.app",
+      "github": "",
+      "caseStudy": ""
+    },
+    "featured": true
+  }
+]
