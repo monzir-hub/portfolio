@@ -64,9 +64,13 @@
   color: var(--paper);
 }
 
+/* The whole name is set in the Newsreader italic; "Ali" is picked out in blush. */
 .name :global(.it) {
-  font-size: 1.04em;
-  letter-spacing: -0.02em;
+  font-size: 1.06em;
+  letter-spacing: -0.025em;
+}
+
+.name :global(.ali) {
   color: var(--blush);
   padding-inline-start: 0.04em;
 }

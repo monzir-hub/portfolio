@@ -44,11 +44,15 @@
 }
 
 .name :global(.it) {
-  color: var(--blush);
-  font-size: 1.06em;
+  font-size: 1.12em;
+  letter-spacing: -0.01em;
 }
 
-.bar[data-open="true"] .name :global(.it) {
+.ali {
+  color: var(--blush);
+}
+
+.bar[data-open="true"] .ali {
   color: var(--blush);
 }
 
@@ -238,13 +242,8 @@
   }
 }
 
-@media (max-width: 420px) {
-  .right > nav[dir="ltr"] {
-    display: none;
-  }
-}
-
-@media (max-width: 420px) {
+@media (max-width: 480px) {
+  .right > nav[dir="ltr"],
   .desc {
     display: none;
   }

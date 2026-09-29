@@ -23,7 +23,7 @@ export function Footer({ lang }: { lang: Locale }) {
         <div className={styles.top}>
           <p className={styles.mark + " serif"}>
             <span lang="en">
-              {first} <span className="it accent">{rest.join(" ")}</span>
+              <span className="it">{first}</span> <span className="it accent">{rest.join(" ")}</span>
             </span>
             <span className={styles.desc}>{brand.descriptor}</span>
           </p>

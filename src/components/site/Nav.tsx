@@ -65,7 +65,7 @@ export function Nav() {
       >
         <Link href={href("/")} className={styles.brand} aria-label={c.brand.name + ", " + t.nav.home}>
           <span className={styles.name + " serif"} lang="en">
-            {first} <span className="it">{rest.join(" ")}</span>
+            <span className="it">{first}</span> <span className={"it " + styles.ali}>{rest.join(" ")}</span>
           </span>
           <span className={styles.desc}>/ {c.brand.descriptor}</span>
         </Link>

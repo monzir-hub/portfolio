@@ -52,7 +52,7 @@ export function Hero() {
             stagger={0.08}
             className={styles.name}
             lang="en"
-            segments={[first, { text: rest.join(" "), className: "it" }]}
+            segments={[{ text: first, className: "it" }, { text: rest.join(" "), className: "it ali" }]}
           />
           <p className={styles.descriptor + " enter-soft"} style={{ "--delay": "0.3s" } as React.CSSProperties}>
             <span>{c.brand.descriptor}</span>
