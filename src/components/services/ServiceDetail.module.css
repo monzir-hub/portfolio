@@ -1,0 +1,108 @@
+.service {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 40px;
+  align-items: center;
+  padding-block: clamp(72px, 12vh, 140px);
+  border-bottom: 1px solid var(--line);
+}
+
+.text {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 22px;
+}
+
+.visual {
+  grid-column: 7 / -1;
+}
+
+.service[data-flip="true"] .text {
+  grid-column: 8 / -1;
+  grid-row: 1;
+}
+
+.service[data-flip="true"] .visual {
+  grid-column: 1 / span 6;
+  grid-row: 1;
+}
+
+.num {
+  font-size: 56px;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.name {
+  font-size: clamp(44px, 5vw, 92px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.tagline {
+  margin-top: 12px;
+}
+
+.summary {
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.5;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.cols h3 {
+  margin-bottom: 10px;
+}
+
+.deliverables {
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.deliverables li::before {
+  content: "— ";
+  color: var(--accent);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stack li {
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  border: 1px solid var(--line-strong);
+}
+
+.proof {
+  justify-self: start;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .text,
+  .visual,
+  .service[data-flip="true"] .text,
+  .service[data-flip="true"] .visual {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .cols {
+    grid-template-columns: 1fr;
+  }
+}

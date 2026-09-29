@@ -1,0 +1,131 @@
+.approach {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+.aside {
+  grid-column: 1 / span 5;
+}
+
+.sticky {
+  position: sticky;
+  top: calc(var(--nav-h) + 40px);
+  display: grid;
+  gap: 32px;
+}
+
+.numeral {
+  position: relative;
+  height: clamp(160px, 18vw, 300px);
+  overflow: hidden;
+  display: grid;
+}
+
+.numeral span {
+  grid-area: 1 / 1;
+  font-size: clamp(160px, 20vw, 340px);
+  line-height: 0.9;
+  color: var(--accent);
+}
+
+.rail {
+  display: grid;
+  border-inline-start: 1px solid var(--line-strong);
+}
+
+.rail li {
+  position: relative;
+  padding-block: 8px;
+  padding-inline: 20px 0;
+  font-size: 16px;
+  color: var(--muted);
+  transition: color 0.4s;
+}
+
+.rail li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.5s var(--ease);
+}
+
+.rail li[data-on="true"] {
+  color: var(--fg);
+}
+
+.rail li[data-on="true"]::before {
+  transform: scaleY(1);
+}
+
+.rail li[data-done="true"] {
+  color: var(--fg);
+  opacity: 0.6;
+}
+
+.chapters {
+  grid-column: 7 / -1;
+}
+
+.chapter {
+  min-height: 70svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding-block: 48px;
+  border-bottom: 1px solid var(--line);
+  opacity: 0.35;
+  transition: opacity 0.6s var(--ease);
+}
+
+.chapter[data-active="true"] {
+  opacity: 1;
+}
+
+.name {
+  font-size: clamp(52px, 6vw, 110px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.line {
+  font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.35;
+}
+
+.detail {
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+.output {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.output :global(.serif) {
+  font-size: 24px;
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .aside {
+    display: none;
+  }
+  .chapters {
+    grid-column: 1 / -1;
+  }
+  .chapter {
+    min-height: 0;
+    opacity: 1;
+  }
+}

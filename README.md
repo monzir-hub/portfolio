@@ -1,44 +1,54 @@
-# Portfolio (Web + AI)
+# Almonzir Ali · Digital Solutions
 
-Premium, single-page portfolio for showcasing Websites, AI Videos, and Projects. Built with vanilla HTML/CSS/JS and data-driven content via `data/portfolio.json`.
+Personal portfolio of Almonzir Ali: websites, mobile apps, cloud platforms and the systems behind them. Available in English (`/`) and Arabic (`/ar`).
+
+Built from scratch with **Next.js 15**, **TypeScript** and **Motion**, exported as a fully static site.
+
+## Highlights
+
+- **Exploded product stack** hero: interface, API, data and cloud layers in CSS 3D, driven by pointer and scroll.
+- **Live project chapters**: real Shifa, TEE and Omdurman Industries sites scroll inside a browser frame as you scroll.
+- **Trace a request**: an interactive walk through Shifa's architecture, where every step mirrors real code.
+- **Bilingual**: English and Arabic share one layout; Arabic sentences read right to left.
+- Accessible (reduced motion, no-JS fallbacks, keyboard focus) and fast (static HTML, no animation-heavy first paint).
 
 ## Run locally
-- Open `index.html` directly in a browser, or
-- Serve the folder (recommended for fetch): `npx serve .` then visit the shown URL.
 
-## Structure
-- `index.html` ? main layout (Home, Work, About, CV, Contact)
-- `css/style.css` ? theme, layout, animations
-- `js/main.js` ? data loading, filtering, modal, form handling
-- `data/portfolio.json` ? editable portfolio items (id, title, category, descriptions, tools, media, links, featured)
-- `public/profile.jpg` ? profile photo placeholder
-- `public/cv.pdf` ? CV placeholder
-- `public/portfolio/*` ? gallery thumbnails/full media placeholders
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
 
-## Editing portfolio items
-1) Open `data/portfolio.json`.
-2) Each item fields:
-   - `category`: `websites` | `ai-videos` | `projects`
-   - `media.type`: `image` | `video` | `gallery`
-   - `media.src` (for image/gallery) or `media.embedUrl` (for YouTube/Vimeo)
-   - `links.live/github/caseStudy` are optional.
-3) Add or remove items; set `featured: true` to surface at the top.
+## Build
 
-## Replace assets
-- Profile photo: replace `public/profile.jpg` with your own image (keep filename or update paths in HTML).
-- CV: replace `public/cv.pdf`. The hero buttons use the same path for download + open.
-- Thumbnails/full media: drop files in `public/portfolio/` and update paths in `data/portfolio.json`.
+```bash
+npm run build      # static site in out/
+npm start          # serve out/ on http://localhost:3000
+npm run typecheck
+```
+
+## Project structure
+
+```
+src/
+  app/
+    (en)/          English routes, served at /
+    ar/            Arabic routes, served at /ar
+    globals.css    design tokens, typography, Arabic text rules
+  views/           page compositions shared by both languages
+  components/      hero, services, work, capabilities, process, site chrome
+  content/         projects, services, system trace (English) + ar.ts (Arabic)
+  i18n/            locale config, UI dictionary, useLocale()
+public/work/       optimised project screenshots
+```
+
+## Editing content
+
+- Projects: `src/content/projects.ts` (English) and `src/content/ar.ts` (Arabic overrides by id).
+- Services, process, principles: `src/content/services.ts` and `src/content/ar.ts`.
+- Interface text: `src/i18n/dictionary.ts`. Both languages share one type, so a missing translation fails the typecheck.
+- Contact details: `src/content/brand.ts`.
 
 ## Deploy
-- Any static host works (Vercel/Netlify/GitHub Pages). Publish the folder root.
-- Ensure `data/portfolio.json` is served with correct MIME (default on most hosts).
 
-## Contact form
-- Currently posts to a demo Formspree endpoint. Replace the URL in `js/main.js` with your Formspree form URL (or custom backend). Front-end validation + honeypot included.
-
-## Customization ideas
-- Tweak colors and gradients in `:root` inside `css/style.css`.
-- Update hero chips/services/about copy in `index.html`.
-- Add testimonials or blog blocks by duplicating existing section patterns.
-
-# portfolio
+The site is static. `netlify.toml` is included: build command `npm run build`, publish directory `out`.

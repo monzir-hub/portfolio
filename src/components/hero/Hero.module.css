@@ -1,0 +1,281 @@
+.hero {
+  position: relative;
+  overflow: clip;
+}
+
+/* A faint 12-column grid in cream, over the burgundy. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 var(--gutter);
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(244, 237, 227, 0.06) 1px, transparent 1px) 0 0 / calc(100% / 12) 100%;
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto 1fr auto;
+  column-gap: var(--gap);
+  min-height: max(100svh, 780px);
+  padding-top: calc(var(--nav-h) + 22px);
+  padding-bottom: 26px;
+}
+
+.meta {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.metaRule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.copy {
+  grid-column: 1 / span 7;
+  grid-row: 2;
+  align-self: center;
+  padding-block: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* The name is the headline. */
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(64px, 8.4vw, 160px);
+  line-height: 0.92;
+  letter-spacing: -0.042em;
+  margin-inline-start: -0.04em;
+  color: var(--paper);
+}
+
+.name :global(.it) {
+  font-size: 1.04em;
+  letter-spacing: -0.02em;
+  color: var(--blush);
+  padding-inline-start: 0.04em;
+}
+
+.descriptor {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(18px, 2.6vh, 28px);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(13px, 1vw, 16px);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--blush);
+}
+
+.descriptor::after {
+  content: "";
+  width: 64px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.message {
+  margin-top: clamp(28px, 4.5vh, 52px);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 2.5vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  max-width: 22ch;
+}
+
+.message :global(.it) {
+  color: var(--blush);
+}
+
+.lede {
+  max-width: 46ch;
+  margin-top: clamp(16px, 2.4vh, 24px);
+  font-size: clamp(16px, 1.15vw, 18.5px);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 32px;
+  margin-top: clamp(26px, 4vh, 40px);
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  background: var(--paper);
+  color: var(--burgundy);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.primary:hover {
+  background: var(--blush);
+  color: var(--wine-deep);
+}
+
+.primary span {
+  display: inline-block;
+  transition: transform 0.4s var(--ease);
+}
+
+.primary:hover span {
+  transform: translateX(calc(5px * var(--flip)));
+}
+
+.secondary {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.visual {
+  grid-column: 8 / -1;
+  grid-row: 2;
+  align-self: center;
+  position: relative;
+  display: grid;
+  gap: 8px;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+  margin-top: -4%;
+  position: relative;
+  z-index: 2;
+}
+
+.legendItem {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 0 4px;
+  text-align: start;
+  border-top: 1px solid var(--line-strong);
+  transition: border-color 0.3s;
+}
+
+.legendItem[data-active="true"] {
+  border-top-color: var(--blush);
+}
+
+.legendItem :global(.mono) {
+  color: var(--muted);
+}
+
+.legendName {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.15;
+  transition:
+    transform 0.4s var(--ease),
+    color 0.3s;
+}
+
+.legendTech {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.legendItem[data-active="true"] .legendName,
+.legendItem:hover .legendName {
+  color: var(--blush);
+  transform: translateX(calc(4px * var(--flip)));
+}
+
+.services {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.services :global(.mono) {
+  color: var(--blush);
+}
+
+.services a {
+  transition: color 0.3s;
+}
+
+.services a:hover {
+  color: var(--blush);
+}
+
+@media (max-width: 1100px) {
+  .visual {
+    grid-column: 7 / -1;
+  }
+  .legend {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .inner {
+    grid-template-rows: auto auto auto auto;
+    min-height: 0;
+  }
+  .meta span:last-child {
+    display: none;
+  }
+  .copy {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    padding-block: 32px 8px;
+  }
+  .name {
+    font-size: clamp(60px, 19vw, 110px);
+  }
+  .descriptor {
+    letter-spacing: 0.4em;
+  }
+  .visual {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-top: 72px;
+  }
+  .legend {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    margin-top: 0;
+  }
+  .services {
+    display: none;
+  }
+}

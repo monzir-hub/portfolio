@@ -1,0 +1,137 @@
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+.figure {
+  grid-column: 1 / span 5;
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+}
+
+.figureInner {
+  margin-inline-start: -8%;
+}
+
+.list {
+  grid-column: 7 / -1;
+  border-top: 1px solid var(--line-strong);
+}
+
+.layer {
+  border-bottom: 1px solid var(--line);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+  width: 100%;
+  padding: 20px 0;
+  text-align: start;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.name {
+  font-size: clamp(30px, 3.2vw, 54px);
+  line-height: 1;
+  transition:
+    color 0.35s,
+    transform 0.6s var(--ease);
+}
+
+.role {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.layer[data-open="true"] .name {
+  color: var(--accent);
+  font-style: italic;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  transform: translateX(calc(6px * var(--flip)));
+}
+
+.layer[data-open="true"] .num {
+  color: var(--accent);
+}
+
+.body {
+  overflow: hidden;
+}
+
+.bodyInner {
+  display: grid;
+  gap: 16px;
+  padding-block: 0 24px;
+  padding-inline: 56px 0;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech li {
+  padding: 8px 14px;
+  font-size: 15px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.used {
+  font-size: 14.5px;
+}
+
+.used :global(.mono) {
+  margin-inline-end: 10px;
+}
+
+.langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding-top: 20px;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .figure {
+    position: static;
+    grid-column: 1 / -1;
+    max-width: 440px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .figureInner {
+    margin: 0;
+  }
+  .list {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+  }
+  .head {
+    grid-template-columns: 36px 1fr;
+  }
+  .role {
+    grid-column: 2;
+    text-align: start;
+    margin-top: 6px;
+  }
+  .bodyInner {
+    padding-inline-start: 36px;
+  }
+}

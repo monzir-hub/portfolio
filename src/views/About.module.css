@@ -1,0 +1,35 @@
+.principles {
+  padding-block: clamp(96px, 14vh, 180px);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.item {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.num {
+  font-size: 56px;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.item h3 {
+  font-size: clamp(28px, 2.4vw, 40px);
+  line-height: 1.05;
+}
+
+@media (max-width: 900px) {
+  .list {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+}

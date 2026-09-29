@@ -1,0 +1,170 @@
+.form {
+  display: grid;
+  gap: 34px;
+}
+
+.group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.group legend {
+  padding: 0;
+  margin-bottom: 14px;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+
+.chip:hover {
+  border-color: var(--fg);
+}
+
+.chip[data-on="true"] {
+  border-color: var(--wine);
+  color: var(--paper);
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chip:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.chipFill {
+  position: absolute;
+  inset: 0;
+  background: var(--wine);
+  transform-origin: var(--start);
+}
+
+.chipText {
+  position: relative;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+.field {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 10px 0;
+  font: inherit;
+  font-size: 18px;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+  border-bottom: 2px solid var(--wine);
+}
+
+.preview {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+}
+
+.previewBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  text-transform: none;
+}
+
+.previewBody {
+  margin: 0;
+  padding: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.submitRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}
+
+.submitRow p {
+  font-size: 14px;
+  max-width: 34ch;
+}
+
+.submit {
+  display: inline-flex;
+  gap: 12px;
+  padding: 18px 28px;
+  font-size: 17px;
+  font-weight: 500;
+  background: var(--wine);
+  color: var(--paper);
+  transition: background 0.3s;
+}
+
+.submit:hover {
+  background: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .pair,
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}

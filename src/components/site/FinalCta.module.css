@@ -1,0 +1,110 @@
+.cta {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+  padding-block: clamp(110px, 18vh, 220px) clamp(90px, 13vh, 160px);
+  background:
+    radial-gradient(70% 90% at 90% 10%, var(--wine-bright), transparent 60%),
+    radial-gradient(60% 70% at 0% 100%, var(--wine-deep), transparent 70%),
+    var(--burgundy);
+}
+
+.mark {
+  position: absolute;
+  inset-inline-end: -2vw;
+  top: -8vw;
+  z-index: -1;
+  font-size: clamp(320px, 52vw, 900px);
+  line-height: 1;
+  color: rgba(244, 237, 227, 0.07);
+  pointer-events: none;
+}
+
+.inner {
+  display: grid;
+  gap: clamp(28px, 4vh, 44px);
+}
+
+.title {
+  font-weight: 700;
+  font-size: clamp(52px, 9vw, 176px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  max-width: 12ch;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px 44px;
+  margin-top: 8px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 34px;
+  font-size: 18px;
+  font-weight: 500;
+  background: var(--paper);
+  color: var(--burgundy);
+  font-weight: 600;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.button:hover {
+  background: var(--blush);
+  color: var(--wine-deep);
+}
+
+.contact {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.email {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2vw, 30px);
+}
+
+.contact button {
+  color: var(--muted);
+  padding: 6px 0;
+}
+
+.contact button:hover {
+  color: var(--fg);
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+}
+
+.links a {
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: var(--fg);
+}
+
+.sign {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 1.8vw, 28px);
+  letter-spacing: -0.02em;
+  color: var(--muted);
+}
+
+.sign :global(.it) {
+  color: var(--blush);
+  margin-inline-start: 6px;
+}

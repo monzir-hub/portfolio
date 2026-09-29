@@ -1,0 +1,158 @@
+.chapter {
+  position: relative;
+  height: 240svh;
+  border-top: 1px solid var(--line);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: center;
+  padding-top: calc(var(--nav-h) - 10px);
+}
+
+.text {
+  grid-column: 1 / span 4;
+  display: grid;
+  gap: 18px;
+  align-content: center;
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.num {
+  font-family: var(--font-serif);
+  font-size: 44px;
+  font-style: italic;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  color: var(--accent);
+  text-transform: none;
+}
+
+.title {
+  font-weight: 700;
+  font-size: clamp(52px, 6vw, 112px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.tagline {
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.45;
+  max-width: 36ch;
+}
+
+.built {
+  display: grid;
+  gap: 6px;
+  font-size: 14.5px;
+  color: var(--muted);
+  max-width: 44ch;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stack li {
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  border: 1px solid var(--line-strong);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 26px;
+  margin-top: 6px;
+}
+
+.case {
+  display: inline-flex;
+  gap: 10px;
+  padding: 13px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--paper);
+  color: var(--burgundy);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.case:hover {
+  background: var(--blush);
+}
+
+.live {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.visual {
+  grid-column: 6 / -1;
+  position: relative;
+  padding-bottom: 6%;
+}
+
+.browser {
+  aspect-ratio: 16 / 10.8;
+}
+
+.browser img {
+  width: 100%;
+  will-change: transform;
+}
+
+.phone {
+  position: absolute;
+  inset-inline-start: -7%;
+  bottom: -2%;
+  width: 19%;
+  will-change: transform;
+}
+
+/* Tablet and phone: no pinning. Text, then the frame scrolls as it passes. */
+@media (max-width: 1000px) {
+  .chapter {
+    height: auto;
+    padding-block: 72px;
+  }
+  .sticky {
+    position: static;
+    height: auto;
+    padding-top: 0;
+    row-gap: 40px;
+  }
+  .text,
+  .visual {
+    grid-column: 1 / -1;
+  }
+  .phone {
+    inset-inline-start: auto;
+    inset-inline-end: -2%;
+    width: 26%;
+  }
+}

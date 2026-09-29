@@ -1,0 +1,50 @@
+.section {
+  padding-block: clamp(56px, 9vh, 110px) clamp(96px, 14vh, 160px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 56px;
+  align-items: start;
+}
+
+.methods {
+  grid-column: 1 / span 4;
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  border-top: 1px solid var(--line-strong);
+}
+
+.methods > div {
+  display: grid;
+  gap: 4px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.methods dd {
+  font-size: clamp(20px, 1.6vw, 26px);
+  word-break: break-word;
+}
+
+.methods a {
+  transition: color 0.3s;
+}
+
+.methods a:hover {
+  color: var(--wine);
+}
+
+.builder {
+  grid-column: 6 / -1;
+}
+
+@media (max-width: 900px) {
+  .methods,
+  .builder {
+    grid-column: 1 / -1;
+    position: static;
+  }
+}

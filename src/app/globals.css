@@ -1,0 +1,402 @@
+/* ─────────────────────────────────────────────────────────────
+   Editorial Lab: the brand palette (wine, cream, ink, blush)
+   set in a new system of hairlines, grids and numbered sections.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Direction helpers: hover nudges and growing bars follow the reading direction. */
+  --flip: 1;
+  --start: left;
+  --paper: #f4ede3;
+  --paper-2: #ece3d6;
+  --paper-3: #e1d5c5;
+  --ink: #140c0e;
+  --ink-2: #1d1215;
+  --ink-3: #2a1b1f;
+  --wine: #6e1427;
+  --wine-bright: #8e1f37;
+  --burgundy: #5c0f21;
+  --burgundy-2: #74162c;
+  --wine-deep: #3e0a16;
+  --wine-night: #1f050b;
+  --blush: #e6bfb3;
+  --blush-soft: #f1dcd4;
+
+  /* Display: Inter Tight. Accent: Newsreader italic, used for single emphasised words. */
+  --font-display: var(--font-inter-tight), "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-display);
+  --font-accent: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+
+  --gutter: clamp(16px, 3.6vw, 56px);
+  --gap: clamp(12px, 1.5vw, 24px);
+  --nav-h: 68px;
+  --maxw: 1680px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Aliases used by the figure and trace components */
+  --ease-out: var(--ease);
+  --ease-in-out: var(--ease-io);
+  --col-gap: var(--gap);
+}
+
+/* Surfaces declare their tokens; components only use the semantic ones. */
+:root,
+.paper {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: #6d5c59;
+  --accent: var(--wine);
+  --line: rgba(20, 12, 14, 0.14);
+  --line-strong: rgba(20, 12, 14, 0.32);
+  --panel: var(--paper-2);
+}
+
+.ink,
+.wine {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --muted: #b3a19c;
+  --accent: var(--blush);
+  --line: rgba(244, 237, 227, 0.13);
+  --line-strong: rgba(244, 237, 227, 0.3);
+  --panel: var(--ink-2);
+}
+
+/* True burgundy surface: the brand colour as a background, not just an accent. */
+.wine {
+  --bg: var(--burgundy);
+  --muted: #e2bdb4;
+  --line: rgba(244, 237, 227, 0.16);
+  --line-strong: rgba(244, 237, 227, 0.36);
+  --panel: rgba(20, 5, 9, 0.28);
+}
+
+.paper,
+.ink,
+.wine {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.wine {
+  background:
+    radial-gradient(90% 70% at 85% 0%, var(--burgundy-2) 0%, transparent 60%),
+    radial-gradient(70% 60% at 0% 100%, var(--wine-deep) 0%, transparent 70%),
+    var(--burgundy);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--paper);
+  scroll-padding-top: var(--nav-h);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure, dl, dd {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+button,
+label,
+input,
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--wine);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--nav-h) + 16px);
+}
+
+/* ── Primitives ─────────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+.serif {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* One emphasised word: a refined italic serif against the sans. */
+.it {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* Section marker: "§ 01 — Services" with a hairline */
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.marker b {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.marker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 300;
+  padding: 10px 14px;
+  background: var(--wine);
+  color: var(--paper);
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* Text link with a drawn underline */
+.link-line {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 0.5s var(--ease);
+}
+
+.link-line:hover {
+  background-size: 0 1px;
+  background-position: 100% 100%;
+}
+
+/* Above-the-fold entrances run in CSS so they start with first paint,
+   before any JavaScript hydrates (better LCP, and no-JS safe). */
+.word-mask {
+  display: inline-block;
+  overflow: clip;
+  overflow-clip-margin: 0.2em;
+  vertical-align: top;
+  padding-bottom: 0.06em;
+}
+
+.word-in {
+  display: inline-block;
+  animation: word-in 1s var(--ease) both;
+  animation-delay: calc(var(--d, 0s) + var(--i, 0) * var(--s, 0.05s));
+}
+
+.enter {
+  animation: enter 1s var(--ease) both;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Rises without fading: visible from the first frame, so it can count as the largest paint. */
+.enter-soft {
+  animation: enter-soft 1.1s var(--ease) both;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes enter-soft {
+  from {
+    transform: translate3d(0, 14px, 0);
+  }
+}
+
+@keyframes word-in {
+  from {
+    transform: translate3d(0, 110%, 0);
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Arabic
+   The layout stays left to right, exactly like English; only the words change.
+   Arabic faces sit behind the Latin ones in every stack, so Latin text (the name,
+   tech terms) renders exactly as in English and only Arabic letters fall through
+   to IBM Plex Sans Arabic or, for accent words, Amiri.
+   ───────────────────────────────────────────────────────────── */
+html[lang="ar"] {
+  --font-display: var(--font-inter-tight), var(--font-plex-arabic), sans-serif;
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-geist), var(--font-plex-arabic), sans-serif;
+  --font-mono: var(--font-geist-mono), var(--font-plex-arabic), monospace;
+  --font-accent: var(--font-newsreader), var(--font-amiri), serif;
+}
+
+/* Arabic letters join, so no tracking; and there is no Arabic italic.
+   Anything marked lang="en" (the name) keeps its English styling. */
+html[lang="ar"] body :not(:lang(en)) {
+  letter-spacing: 0 !important;
+}
+
+html[lang="ar"] body :not(:lang(en)).it,
+html[lang="ar"] body :not(:lang(en)) :is([class*="name"], [class*="title"]) {
+  font-style: normal;
+}
+
+/* Arabic needs more vertical room for dots and descenders. */
+html[lang="ar"] :is(h1, h2, h3, h4, .serif):not(:lang(en)) {
+  line-height: 1.3 !important;
+}
+
+/* The page layout stays exactly as in English: columns, images and navigation keep
+   their positions. Only the text itself reads right to left: text elements take
+   direction: rtl, so Arabic lines start from the right edge of their own block.
+   Structural containers are never targeted, so nothing in the layout mirrors. */
+html[lang="ar"] :is(
+    h1, h2, h3, h4, p, dd, dt, legend, label, blockquote, textarea, input,
+    li:not(:has(> :not(span, a, b, i, em, strong, bdi, br))),
+    [class*="name"], [class*="title"], [class*="tagline"], [class*="role"], [class*="Tech"],
+    [class*="lede"], [class*="summary"]
+  ):not(:lang(en)) {
+  direction: rtl;
+  text-align: start;
+}
+
+/* Arabic blocks fill their column so right-aligned lines meet the column's edge. */
+html[lang="ar"] :is(h1, h2, h3, h4, p, [class*="lede"], [class*="summary"]):not(:lang(en)) {
+  max-width: none !important;
+}
+
+/* English (the name) and technical left-to-right areas keep their own direction. */
+html[lang="ar"] [lang="en"],
+html[lang="ar"] [dir="ltr"],
+html[lang="ar"] [dir="ltr"] * {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="ar"] .word-mask {
+  padding-block: 0.12em 0.22em;
+  margin-block: -0.12em -0.22em;
+}
+
+html[lang="ar"] .mono:not(:lang(en)),
+html[lang="ar"] .marker {
+  font-size: 12.5px;
+}
